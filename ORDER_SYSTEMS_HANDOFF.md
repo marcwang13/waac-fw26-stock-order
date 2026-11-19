@@ -29,7 +29,7 @@ Marc 同時用 Claude 和 Grok Bot 維護這四套系統，一次只會有一邊
 | SDR | SUN DAY RED FW27 | 上線收單中（範本） | https://marcwang13.github.io/sdr-fw27-order/ | marcwang13/sdr-fw27-order | 207／105 | `FW27-` | `#610e0e` 酒紅 | `sdr-` |
 | DST | DESCENTE 27FW Early Buy | 上線收單中 | https://marcwang13.github.io/dst-27fw-order/ | marcwang13/dst-27fw-order | 69／23 | `DST27-` | `#0a3f94` 藍 | `dst-` |
 | DSTC | DESCENTE 27FW 正式訂貨（27Q3Q4 Convention） | 建置中（台灣定價待定；網頁不顯示價格，Excel 附韓幣 MSRP） | https://marcwang13.github.io/dst-27fw-main-order/ | marcwang13/dst-27fw-main-order | 1,114／456 | `DSTC27-` | `#0a3f94` 藍 | `dstc-` |
-| WAAC | WAAC FW26 現貨（現有庫存接單） | 建置中（repo／後台都還沒建） | https://marcwang13.github.io/waac-fw26-stock-order/ | marcwang13/waac-fw26-stock-order | 19／11（25 個尺寸 SKU，168 件） | `WAAC26S-` | `#141414` 黑＋`#c8102e` 紅 | `waac-` |
+| WAAC | WAAC FW26 現貨（現有庫存接單） | 上線收單中（2026-11-19） | https://marcwang13.github.io/waac-fw26-stock-order/ | marcwang13/waac-fw26-stock-order | 19／11（25 個尺寸 SKU，168 件） | `WAAC26S-` | `#141414` 黑＋`#c8102e` 紅 | `waac-` |
 | BYS | BLACK YAK 27SS | 未完成（已上線，未正式開放） | https://marcwang13.github.io/by-27ss-order/ | marcwang13/by-27ss-order | 747／349 | `BYS27-` | `#141414` 黑 | `bys-` |
 | BYF | BLACK YAK 27FW | 未完成（已上線，未正式開放） | https://marcwang13.github.io/by-27fw-order/ | marcwang13/by-27fw-order | 150／148 | `BYF27-` | `#141414` 黑 | `byf-` |
 
@@ -40,7 +40,7 @@ Marc 同時用 Claude 和 Grok Bot 維護這四套系統，一次只會有一邊
 | SDR | https://script.google.com/macros/s/AKfycbzJ_l8ZTP4zOzK1WKJmpcfBKnd9N05hL8rUMr5lVLTGMHsGIYpq2udV0DXDecC-Q1dX/exec | https://docs.google.com/spreadsheets/d/1MD9-FCwtUrQM6K79bi6HDbZpdlpNj9qLk5dAu_pBRic/edit |
 | DST | https://script.google.com/macros/s/AKfycbxxlmSXignxS5EE7Bd2vpPw3Z7HRcg9bb9BeN5tlCDfLMYUDFugMGcS4rv4rJydck_bcw/exec | https://docs.google.com/spreadsheets/d/1dWV3TyPOV__bduxdHDoBe-FieMdV02vr9-qjQrgkbpU/edit |
 | DSTC | https://script.google.com/macros/s/AKfycbxvudd7CBJzFcuxFbhq1_huI9BwEY3zXGxW-_ODDJrs2SSTNJmPVLJYULRk_uiDaqzy/exec | https://docs.google.com/spreadsheets/d/1Z3xtNZ-P6mepW-d0DIFg8O96bDfxRFOoU15BjaZko5w/edit |
-| WAAC | （待部署：emerswhlsystem.marc@gmail.com 名下新建） | （待建立：「WAAC FW26 現貨 線上訂單」） |
+| WAAC | https://script.google.com/macros/s/AKfycbyavOzjw-zJrwZqn7JqGYRQYhPsQEF0RHZw8-BAXLYeidJ1qlmDLY7JylstqYQTFQlrNw/exec | https://docs.google.com/spreadsheets/d/11aMcRd0iNLH0lq3qHW3M4-HlRcdExsFNsiOGSNpnx_w/edit （「WAAC FW26 現貨 線上訂單」，系統帳號） |
 | BYS | https://script.google.com/macros/s/AKfycbwBKPi33bXNrIS7rdRpSJegQRBtljhtXKfEU-oBY0vMHUpBSzSNCfgaxdkttTdwETbT/exec | https://docs.google.com/spreadsheets/d/1elXDIBFt4J-eMZOjU8NhwVbCh2-8_u0o2RBk4c21_sE/edit |
 | BYF | https://script.google.com/macros/s/AKfycbwob2mjChGVJGGnlyVB-Vd9eEeXhcEOMb7IQUO4udmiKlLHLi3R7QNZPimVoFE3ozf2/exec | https://docs.google.com/spreadsheets/d/1IhJqFN5_V9B45q0lNpt9ZKe2ByYbM8C9YhaYwGP6JUo/edit |
 
@@ -273,6 +273,7 @@ Excel 訂單本「總表」有同樣的分頁、大類、系列（款色數、�
 **過往參考（2026-11-19，Claude）**：`ref.js`（`window.DSTC_REF`）由 `tools/build_ref.py` 從 emers-whl-system 的 `dealer/data/chain_*`、`internal/data/direct_chain_*` 算出。區域：直營依主檔 region；動力新竹巨城、中和環球＝北部，其餘門市＝中部；雷根大甲＝中部、其餘＝南部（天王暫列南部，待 Marc 確認）。雷根、動力目前沒有 25FW 整季資料，中部、南部畫面不顯示資料期間提醒（Marc 11/19 要求拿掉），ref.js 也不放體系名稱與期間。每月 POS 匯入後重跑：`python3 tools/build_ref.py --whl ../emers-whl-system --xlsx 對照表.xlsx`，再更新 index.html 的 `ref.js?v=`。
 
 ### WAAC FW26 現貨（`waac-fw26-stock-order`）現況（2026-11-19，Grok）
+- 2026-11-19 15:00 上線：後台在 emerswhlsystem.marc@gmail.com（Apps Script 部署 v1），指令碼屬性未設 PREORDER_SSO_SECRET／ADMIN_KEY，訂單彙整驗票由 Early Buy 收單程式代驗（`SSO_PROXY_URL`）。
 - 用途：手上已到貨的現貨新品接單，不是預訂。以 DST Early Buy 前台為底、Code.gs 以 DSTC（含會員票券 SSO）為底。
 - 商品：WAAC FW26 帽款＋桿頭套 19 款色／11 款，全部 ACC（品類：棒球帽、遮陽帽、漁夫帽、護耳帽、桿頭套）。來源 Excel 分頁 FW26（款號、色號、品號、SRP、Order 欄）。
 - 庫存：每個尺寸有 `stock`（現有庫存）與 `pn`（品號）。來源＝WHL 每日倉庫庫存（emers-whl-system `unmatched_stock_codes.csv`，2026-11-19 的資料；這批品號還不在 WHL 主檔，所以內部站庫存頁看不到），25 個品號全對到，數量跟 Excel 的 Order 欄一致。`window.WAAC_STOCK_DATE` 顯示在頁首。
@@ -282,7 +283,7 @@ Excel 訂單本「總表」有同樣的分頁、大類、系列（款色數、�
 - 價格：顯示「建議售價」（SRP，NT$2,800／3,800）；HO 分店配貨折數沿用範本 0.5，未確認。
 - 圖片：只有原廠 Excel 內嵌的線稿／實體混合小圖，多色合圖已裁成單色（`tools/crop.py`），沒有放大處理；沒有獨立實體圖。品名、中文顏色為暫定。頁首「資料待更新說明」列出這幾點。
 - 前台沒有任何登入後台的入口；訂單彙整（刪除訂單、一鍵統整交單）只能從內部站 03 卡片「訂單彙整」開（#admin=會員票券，Code.gs 用指令碼屬性 PREORDER_SSO_SECRET 驗證）。
-- 內部站串接（emers-whl-system，已改未部署）：key `waac-fw26-stock`、權限 `pre.waacs`；試算表 ID 待填（tools/preorder_counts.py、tools/preorders_sync.py、internal/preorder-view.js、sys-preorder.html／index.html 後台連結）。
+- 內部站串接（emers-whl-system，已上線）：key `waac-fw26-stock`、權限 `pre.waacs`，試算表 ID 已填進 tools/preorder_counts.py、tools/preorders_sync.py、internal/preorder-view.js 與 03 卡片／首頁後台連結。
 
 ### 入口網站串接（規劃中）
 Marc 要把四套系統（含後台、管理頁）串進另一個入口網站。可行做法：
@@ -319,6 +320,7 @@ Marc 要把四套系統（含後台、管理頁）串進另一個入口網站。
 
 | 日期 | AI | 系統 | 內容 | commit |
 |---|---|---|---|---|
+| 2026-11-19 | Grok | WAAC | 上線：config.js 接系統帳號的 Apps Script，交接文件補後端網址與試算表 | （本次） |
 | 2026-11-19 | Grok | WAAC | 數量上限改為只限單張訂單（LIMIT_ACROSS_ORDERS=false、USE_AVAIL=false，拿掉「可訂」字樣）；材質與產地直接顯示在卡片上，拿掉展開按鈕 | （本次） |
 | 2026-11-19 | Grok | WAAC | 新增 WAAC FW26 現貨訂貨站：每尺寸顯示現有庫存、前後台都擋超過可訂量、現貨標籤、性別／品類篩選、無前台後台入口（只走內部站票券） | （本次） |
 | 2026-11-19 | Claude | DSTC | 同款多色列款式圖改固定 160px 正方形、上下置中（不再跟列高變大變小） | （本次） |
